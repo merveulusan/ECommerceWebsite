@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Activite>
+
+@{
+    ViewData["Title"] = "ArtAndCulture";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+
+    int count = 0;
+}
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="cart-wrapper table-responsive">
+                    <table class="shop_table cart ">
+                        <thead>
+                            <tr>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Tur)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Adi)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.EtkinlikBaslamaTarihi)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.EtkinlikBitisTarihi).ToUpper()</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.EtkinlikMerkezi)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.KısaAcıklama)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.BiletSatisLinki)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.KucukAfis)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="cart_item">
+                                    <td>@item.Tur</td>
+                                    <td>@item.Adi</td>
+                                    <td>@item.EtkinlikBaslamaTarihi</td>
+                                    <td>@item.EtkinlikBitisTarihi</td>
+                                    <td>@item.EtkinlikMerkezi</td>
+                                    <td>@item.KısaAcıklama.Replace("<br>", "")</td>
+                                    <td>
+                                        @if (item.BiletSatisLinki != null)
+                                        {
+                                            <a href="@item.BiletSatisLinki" target="_blank" class="btn btn-success">ETKİNLİK TAKVİMİ</a>
+                                        }
+                                    </td>
+
+                                    <td style="height:50px;width:250px;">
+                                        <img src="@item.KucukAfis"/>
+                                    </td>
+                                </tr>
+                                count++;
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <span id="eczanesayisi" style="background-color:red;color:white;font-size:30px;">Toplam Eczane = @count</span>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->

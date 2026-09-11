@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Vw_MyOrder>
+
+@{
+    ViewData["Title"] = "MyOrders";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+}
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+
+
+                <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    <div class="cart-wrapper table-responsive">
+                        <table class="shop_table cart ">
+                            <thead>
+                                <tr>
+                                    <th class="product-name">TARİH</th>
+                                    <th class="product-price">SİPARİŞ NO</th>
+                                    <th colspan="2" class="product-quantity">ÜRÜN ADI</th>
+                                    <th class="product-subtotal">FİYAT</th>
+                                    <th class="product-subtotal">ADET</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr class="cart_item">
+                                        <td class="product-price">
+                                            <span class="amount">@item.OrderDate</span>
+                                        </td>
+                                    <td class="product-price">
+                                        <span class="amount">@item.OrderGroupGUID</span>
+                                    </td>
+                                    <td class="product-price">
+                                        <span class="amount">@item.ProductName</span>
+                                    </td>
+                                    <td class="product-thumbnail">
+                                        <a href="/Home/Details/@item.ProductID"><img width="114" height="130" alt="04" class="attachment-shop_thumbnail wp-post-image" src="/img/resimler/@item.PhotoPath"></a>
+                                    </td>
+                                    <td class="product-price">
+                                        <span class="amount">@item.UnitPrice</span>
+                                    </td>
+                                    <td class="product-price">
+                                        <span class="amount">@item.Quantity</span>
+                                    </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->

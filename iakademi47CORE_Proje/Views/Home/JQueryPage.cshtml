@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "NewProducts";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+}
+
+
+<div id="loadmoreProducts">
+    <div class="s-poraduct-botton">
+        <input type="submit" name="name" value="TIKLA" />
+    </div>
+</div>
+
+
+<br>
+<br>
+
+
+<div id="div2" style="width:80px;height:80px;background-color:green;"></div>
+
+
+<script>
+    $(document).on("click", "#loadmoreProducts", function () {
+        //  alert("tıkladın")
+          $("#div2").slideUp(5000);
+           $("#div2").slideDown(5000);
+      //});
+    });
+</script>

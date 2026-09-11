@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Pharmacy>
+
+@{
+    ViewData["Title"] = "PharmacyOnDuty";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+    int count = 0;
+}
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="cart-wrapper table-responsive">
+                    <table class="shop_table cart ">
+                        <thead>
+                            <tr>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Tarih)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.LokasyonY)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.LokasyonX)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Adi).ToUpper()</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Telefon)</th>
+                                <th scope="col">@Html.DisplayNameFor(Model => Model.Adres)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="cart_item">
+                                    <td>@item.Tarih</td>
+                                    <td>@item.LokasyonY</td>
+                                    <td>@item.LokasyonX</td>
+                                    <td>@item.Adi</td>
+                                    <td>@item.Telefon</td>
+                                    <td>@item.Adres</td>
+                                </tr>
+                                count++;
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <span id="eczanesayisi" style="background-color:red;color:white;font-size:30px;">Toplam Eczane = @count</span>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->

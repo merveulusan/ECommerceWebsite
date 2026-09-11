@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\frontend\layout\img\.DS_Store" />
+    <None Include="wwwroot\assets\frontend\layout\img\icons\.DS_Store" />
+    <None Include="wwwroot\assets\frontend\pages\img\.DS_Store" />
+    <None Include="wwwroot\assets\frontend\pages\img\layerslider\.DS_Store" />
+    <None Include="wwwroot\assets\frontend\pages\img\revolutionslider\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\carousel-owl-carousel\demos\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\carousel-owl-carousel\demos\json\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\carousel-owl-carousel\owl-carousel\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\ion.rangeslider\js\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\rateit\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\slider-layer-slider\js\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\slider-revolution-slider\css\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\slider-revolution-slider\images\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\slider-revolution-slider\rs-plugin\images\.DS_Store" />
+    <None Include="wwwroot\assets\global\plugins\slider-revolution-slider\rs-plugin\js\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
+    <PackageReference Include="X.PagedList" Version="10.5.9" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
+  </ItemGroup>
+
+</Project>

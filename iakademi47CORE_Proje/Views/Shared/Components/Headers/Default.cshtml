@@ -1,0 +1,281 @@
+﻿@model IEnumerable<Category>
+<!-- program.cs -->
+@inject IHttpContextAccessor Accessor 
+
+<div id="loader-wrapper">
+    <div class="logo"></div>
+    <div id="loader">
+    </div>
+</div>
+<!-- end preloader -->
+<!-- header area start -->
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+
+                @{
+                    var EmailInfo = Accessor.HttpContext.Session.GetString("Email");
+                }
+
+                <div class="logo-area">
+                    <a href="/Home/Index">
+                        <img src="~/img/resimler/iakademi-logo.png" alt="logo" style="height:60px;width:263px;background-color:white;" />
+                        <span style="background-color:red;color:white;">@EmailInfo</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                <div class="top-nav-area">
+                    <ul>
+								
+                        <li>
+                            <a href="/Home/NewProducts">
+                                <i class="fa fa-plus"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        YENİ ÜRÜNLER
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+								
+                        <li>
+                            <a href="/Home/SpecialProducts">
+                                <i class="fa fa-star"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        ÖZELLER
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/DiscountedProducts">
+                                <i class="fa fa-level-down"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        ENÇOK İNDİRİM
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/HighlightedProducts">
+                                <i class="fa fa-heart"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        ÖNE ÇIKANLAR
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/TopsellerProducts">
+                                <i class="fa fa-arrow-up"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        ÇOK SATANLAR
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/MyOrders">
+                                <i class="fa fa-gift"></i>
+                                <div class="nav-select">
+                                    <div class="text_menu">
+                                        SİPARİŞLERİM
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="/Home/Cart">
+                                <div class="cart_area">
+                                    <i class="fa fa-shopping-cart"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            SEPETİM
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                           
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main menu area start  -->
+<div class="main-menu-area ">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="menu-cat-area">
+                    <h3 class="nk-module-title"><span>Category</span></h3>
+                    <div class="nk-all-items" style="display:none;">
+                        <div class="sp-module-content">
+                            <!-- treeview -->
+                            <div class="vina-treeview-virtuemart" id="vina-treeview-virtuemart93">
+                                <ul class="level0 treeview">
+
+                                    @foreach (var item in Model.Where(c => c.ParentID == 0))
+                                    {
+                                        <li class="expandable">
+                                            <a title="@item.CategoryName" href="/Home/CategoryPage/@item.CategoryID" class="baby">
+                                                <span class="catTitle ">@item.CategoryName</span>
+                                            </a>
+
+                                            @foreach (var subitem in Model.Where(c => c.ParentID == item.CategoryID))
+                                            {
+                                                //buraya gelirse yukarıdaki ana kategorinin,alt kategosileri vardır
+                                                <ul class="sub-menu treeview" style="display:none;">
+                                                    <li class="expandable">
+                                                        <a title="@subitem.CategoryName" href="/Home/CategoryPage/@subitem.CategoryID" class="">
+                                                            <span class="catTitle ">@subitem.CategoryName</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            }
+
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2 col-sm-3 col-md-9 col-lg-9">
+                <nav>
+                    <ul>
+                        <li class="active">
+                            <a href="">FAYDALI BİLGİLER</a>
+                            <div class="sp-dropdown-inner">
+                                <ul class="sp-dropdown-items">
+                                    <li class="sp-menu-item"><a href="/WebAPI/PharmacyOnDuty">Nöbetçi Eczaneler</a></li>
+                                    <li class="sp-menu-item"><a href="/WebAPI/ArtAndCulture">Kültür Sanat</a></li>
+                                    <li class="sp-menu-item"><a href="/WebAPI/ExchangeRate">Döviz</a></li>
+                                    <li class="sp-menu-item"><a href="/WebAPI/WeatherForecast">Hava Durumu</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li><a href="/Home/Login">GİRİŞ</a></li>
+                        <li><a href="/Home/Logout">Çıkış</a></li>
+                        <li><a href="/Home/Register">Üye Ol</a></li>
+                        <li><a href="/Home/AboutUs">Hakkımızda</a></li>
+                        <li><a href="/Home/ContactUs">İLETİŞİM</a></li>
+                        <li><a href="/Home/DetailedSearch">DetaylI Arama</a></li>
+                        @* <li><a href="/Admin/Login">ADMİN PANEL</a></li> *@
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main menu area end  -->
+<!-- mobile-menu-area start -->
+<div class="mobile-menu-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mobile-menu">
+                    <nav id="dropdown">
+                        <ul>
+                            <li>
+                                <a href="">FAYDALI BİLGİLER</a>
+                                <ul>
+                                    <li><a href="/WebAPI/PharmacyOnDuty">Nöbetçi Eczaneler</a></li>
+                                    <li><a href="/WebAPI/ArtAndCulture">Kültür Sanat</a></li>
+                                    <li><a href="/WebAPI/ExchangeRate">Döviz</a></li>
+                                    <li><a href="/WebAPI/WeatherForecast">Hava Durumu</a></li>
+                                </ul>
+                            </li>
+                                    
+                            <li><a href="/Home/Login">GİRİŞ</a></li>
+                            <li><a href="/Home/Logout">Çıkış</a></li>
+                            <li><a href="/Home/Register">Üye Ol</a></li>
+                            <li><a href="/Home/AboutUs">Hakkımızda</a></li>
+                            <li><a href="/Home/ContactUs">İLETİŞİM</a></li>
+                            <li><a href="/Home/DetailedSearch">DetaylI Arama</a></li>
+
+
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- mobile-menu-area end -->
+<!-- search area start  -->
+<div class="nk-search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-0 col-sm-0 col-md-3 col-lg-3">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                <div class="nk-search">
+                    
+                    <div class="search_input">
+                        
+                        <input type="text" lang="tr" id="search" name="search" placeholder="Ürün, Kategori ve Marka Ara" style="width:860px;" />
+                        <br/>
+
+                        <div id="dv" style="width:860px; height:auto;margin-top:23px;border-style:solid;background-color:white;
+                          border:#ff6a00ff;position:absolute;z-index:10000;">
+                         <ul id="sul"></ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main menu area end  -->
+
+<script>
+ 
+    //arama alanı
+    $("#search").keyup(function(){
+        var id = $("#search").val();
+        if(id != "" && id.length>2){
+            
+            $.ajax({
+              //arama yapcak
+              url: '/Home/gettingSearch/' + id,
+              type: 'POST',
+              ContentType: "application/json;charset=utf-8",
+              success: function(result){
+               
+                  //resulttan dönen sonucu,gizli çerçeve içinde yazdıracağız.
+                  $("#sul").remove();
+                  $("#dv").append("<ul id='sul'>")
+                  $("#sul").append(result)
+                  $("#dv").append("</ul>")
+
+              }
+            })
+        }
+        else{
+          $("#sul").remove(); //eski bulduğu kayıtları silsin.backspace ile geri geldi.
+        }
+
+    })
+
+</script>

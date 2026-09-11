@@ -1,0 +1,98 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/DefaultLayout.cshtml";
+}
+
+
+<!-- Checkout area start  -->
+<div class="checkout-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div class="row">
+                    <div class="all-out-area" style="margin-top:50px;">
+
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-3"></div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6">
+                            <div class="bt-info" style="border-color:black;">
+                                <h3 class="proopc-process-title"><span class="proopc-step"></span>BİLGİLERİNİZİ GİRİNİZ</h3>
+                                <div class="chek-full-info">
+                                    <div class="inner-wrap">
+                                        <div class="edit-address">
+                                            <form action="/Home/Register" method="post">
+                                                <div>
+                                                    <div class="inner">
+                                                        <label class="email">@Html.DisplayNameFor(model => model.NameSurname)</label>
+                                                        <input type="text" asp-for="NameSurname">
+
+                                                            <span asp-validation-for="NameSurname" class="text-danger"></span>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="company-group">
+                                                    <div class="inner">
+                                                            <label class="company">@Html.DisplayNameFor(model => model.Email)</label>
+                                                        <input type="text" asp-for="Email">
+
+                                                                <span asp-validation-for="Email" class="text-danger"></span>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                        <div class="company-group">
+                                                            <div class="inner">
+                                                                <label class="company">@Html.DisplayNameFor(model => model.Password)</label>
+                                                                <input type="text" asp-for="Password">
+
+                                                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+
+
+
+
+<div class="company-group">
+    <div class="inner">
+        <label class="company">@Html.DisplayNameFor(model => model.Telephone)</label>
+        <input type="text" asp-for="Telephone">
+
+            <span asp-validation-for="Telephone" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="company-group">
+        <div class="inner">
+            <label class="company">@Html.DisplayNameFor(model => model.InvoicesAddress)</label>
+                <textarea type="text" class="inputbox" asp-for="InvoicesAddress" cols="85" rows="5">
+                </textarea>
+
+                <span asp-validation-for="InvoicesAddress" class="text-danger"></span>
+            </div>
+        </div>
+
+                <div class="submit_crt">
+                    <input type="submit" value="Üye Ol" class="update_cart" name="Submit">
+                </div>
+
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout area end  -->
